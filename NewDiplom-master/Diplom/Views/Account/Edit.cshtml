@@ -1,0 +1,59 @@
+﻿@model Diplom.ViewModels.AccountViewModel
+
+@{ ViewData["Title"] = "Edit"; }
+
+<h1 class="text-center colortext">Изменение</h1>
+
+<h4 class="text-center colortext">Аккаунт</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label colortext">Id</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label colortext">Логин</label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label colortext">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label colortext">Телефон</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label colortext">Пароль</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label colortext">Повторите пароль</label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PluralityId" class="control-label colortext">Совместительство</label>
+                    <select asp-for="PluralityId" class="form-control" asp-items="ViewBag.PluralityId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к аккаунтам</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

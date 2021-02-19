@@ -1,0 +1,37 @@
+﻿@model Diplom.Models.TaskComment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center colortext">Подробнее</h1>
+<h4 class="text-center colortext">Комментарий к задачи</h4>
+<body class="body">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Текст комментария
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Text_comment)
+            </dd>
+            <dt class="colortext">
+                Вид комментария
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Type_Comments.Name_comment)
+            </dd>
+            <dt class="colortext">
+                Задача
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.TaskDistributions.View)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" , class="btn br0 btn-secondary">Изменить</a> |
+        <a asp-action="Index" class="colortext">Обратно к коментариям</a>
+    </div>
+</body>

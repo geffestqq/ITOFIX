@@ -1,0 +1,44 @@
+﻿@model Diplom.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center colortext">Подробнее</h1>
+<h4 class="text-center colortext">Сотрудники</h4>
+<body class="body">
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Фамилия
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+            <dt class="colortext">
+                Имя
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="colortext">
+                Отчество
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Second_Name)
+            </dd>
+            <dt class="colortext">
+                Номер сотрудника
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Employee_Number)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" , class="btn br0 btn-secondary">Изменить</a> |
+        <a asp-action="Index" class="colortext">Обратно к сотрудникам</a>
+    </div>
+</body>

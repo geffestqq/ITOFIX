@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyVersion>1.0.7637.0</AssemblyVersion>
+    <FileVersion>1.0.7637.36941</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Import\**" />
+    <Compile Remove="Views\Functions_1\**" />
+    <Compile Remove="Views\Rights_1\**" />
+    <Compile Remove="Views\Roles_1\**" />
+    <Compile Remove="Views\Zadachi\**" />
+    <Compile Remove="Views\Zadachi_1\**" />
+    <Content Remove="Models\Import\**" />
+    <Content Remove="Views\Functions_1\**" />
+    <Content Remove="Views\Rights_1\**" />
+    <Content Remove="Views\Roles_1\**" />
+    <Content Remove="Views\Zadachi\**" />
+    <Content Remove="Views\Zadachi_1\**" />
+    <EmbeddedResource Remove="Models\Import\**" />
+    <EmbeddedResource Remove="Views\Functions_1\**" />
+    <EmbeddedResource Remove="Views\Rights_1\**" />
+    <EmbeddedResource Remove="Views\Roles_1\**" />
+    <EmbeddedResource Remove="Views\Zadachi\**" />
+    <EmbeddedResource Remove="Views\Zadachi_1\**" />
+    <None Remove="Models\Import\**" />
+    <None Remove="Views\Functions_1\**" />
+    <None Remove="Views\Rights_1\**" />
+    <None Remove="Views\Roles_1\**" />
+    <None Remove="Views\Zadachi\**" />
+    <None Remove="Views\Zadachi_1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\FunctionsController_1.cs" />
+    <Compile Remove="Controllers\RightsController_1.cs" />
+    <Compile Remove="Controllers\RolesController_1.cs" />
+    <Compile Remove="Controllers\ZadachiController_1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\Employee.cshtml" />
+    <Content Remove="Views\Home\File_Task.cshtml" />
+    <Content Remove="Views\Home\Function.cshtml" />
+    <Content Remove="Views\Home\Position.cshtml" />
+    <Content Remove="Views\Home\Role.cshtml" />
+    <Content Remove="Views\Home\Status.cshtml" />
+    <Content Remove="Views\Home\Task_Distribution.cshtml" />
+    <Content Remove="Views\Home\Type_Comment.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.3" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Syncfusion.HtmlToPdfConverter.QtWebKit.Net.Core" Version="18.3.0.35" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="18.3.0.44" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+
+</Project>

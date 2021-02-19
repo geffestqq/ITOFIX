@@ -1,0 +1,25 @@
+﻿@model NewDiplom.Models.Position
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center colortext">Подробнее</h1>
+<h4 class="text-center colortext">Должности</h4>
+<body class="body">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Название должности
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Position_name)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" , class="btn br0 btn-secondary">Изменить</a> |
+        <a asp-action="Index" class="colortext">Обратно к должностям</a>
+    </div>
+</body>

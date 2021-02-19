@@ -1,0 +1,49 @@
+﻿@model NewDiplom.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center colortext">Создание</h1>
+
+<h4 class="text-center colortext">Сотрудники</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Surname" class="control-label colortext">Фамилия</label>
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label colortext">Имя</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Second_Name" class="control-label colortext">Отчество</label>
+                    <input asp-for="Second_Name" class="form-control" />
+                    <span asp-validation-for="Second_Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Employee_Number" class="control-label colortext">Номер сотрудника</label>
+                    <input asp-for="Employee_Number" class="form-control" />
+                    <span asp-validation-for="Employee_Number" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Создать" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к сотрудникам</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,58 @@
+﻿@model Diplom.Models.TaskDistribution
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center colortext">Удаление</h1>
+<h4 class="text-center colortext">Распределение задач</h4>
+<body class="body">
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Распределено
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.StartedAt)
+            </dd>
+            <dt class="colortext">
+                Значение периода
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.PeriodValue)
+            </dd>
+            <dt class="colortext">
+                Единица периода
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.PeriodUnit)
+            </dd>
+            <dt class="colortext">
+                Совместительство
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Plurality.View)
+            </dd>
+            <dt class="colortext">
+                Задача
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Zadachi.View)
+            </dd>
+            <dt class="colortext">
+                Статус
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Status.Status_name)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Удалить" class="btn br0 btn-secondary" , onclick="return confirm ('Удалить запись?')" /> |
+            <a asp-action="Index" class="colortext">Обратно к распределению задач</a>
+        </form>
+    </div>
+</body>

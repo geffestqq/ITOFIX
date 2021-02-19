@@ -1,0 +1,64 @@
+﻿@model NewDiplom.Models.Account
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center colortext">Удаление</h1>
+<h4 class="text-center colortext">Аккаунт</h4>
+<body class="body">
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Логин
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+            <dt class="colortext">
+                Пароль
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+            <dt class="colortext">
+                Дата создания
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Date_Create)
+            </dd>
+            <dt class="colortext">
+                Номер телефона
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Phone_Number)
+            </dd>
+            <dt class="colortext">
+                Почта
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="colortext">
+                Права
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Rights.View)
+            </dd>
+            <dt class="colortext">
+                Совместительство
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Plurality.View)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Удалить" class="btn br0 btn-secondary" , onclick="return confirm ('Удалить запись?')" /> |
+            <a asp-action="Index" class="colortext">Обратно к аккаунтам</a>
+        </form>
+    </div>
+</body>

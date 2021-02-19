@@ -1,0 +1,62 @@
+﻿@model Diplom.Models.Zadachi
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center colortext">Изменение</h1>
+
+<h4 class="text-center colortext">Задачи</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label class="control-label colortext">Родитель</label>
+                    <select asp-for="ZadachiParentId" class="form-control" asp-items="ViewBag.ZadachiParentId">
+                        <option value="">Родитель не выбран</option>
+                    </select>
+                    <span asp-validation-for="ZadachiParentId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Task_Name" class="control-label colortext">Название задачи</label>
+                    <input asp-for="Task_Name" class="form-control" />
+                    <span asp-validation-for="Task_Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Task_Detail" class="control-label colortext">Описание задачи</label>
+                    <input asp-for="Task_Detail" class="form-control" />
+                    <span asp-validation-for="Task_Detail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date_Open" class="control-label colortext">Дата открытия</label>
+                    <input asp-for="Date_Open" class="form-control" />
+                    <span asp-validation-for="Date_Open" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date_Close" class="control-label colortext">Дата закрытия</label>
+                    <input asp-for="Date_Close" class="form-control" />
+                    <span asp-validation-for="Date_Close" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StatusId" class="control-label colortext">Статус</label>
+                    <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                    <span asp-validation-for="StatusId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к задачам</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

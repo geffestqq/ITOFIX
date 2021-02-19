@@ -1,0 +1,37 @@
+﻿@model NewDiplom.Models.Plurality
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center colortext">Создание</h1>
+
+<h4 class="text-center colortext">Совместительство</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="EmployeeId" class="control-label colortext">Сотрудник</label>
+                    <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PositionId" class="control-label colortext">Должность</label>
+                    <select asp-for="PositionId" class="form-control" asp-items="ViewBag.PositionId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Создать" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к совместительству</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

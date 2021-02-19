@@ -1,0 +1,37 @@
+﻿@model IEnumerable<NewDiplom.Models.Status>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Статус</h1>
+<body class="body">
+    <p>
+        <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Название статуса
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Status_name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

@@ -1,0 +1,46 @@
+﻿@model List<Diplom.ViewModels.RoleManagmentViewModel>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1 class="text-center colortext">Пользователи с ролями</h1>
+
+<p>
+    <a asp-action="GiveOutRole" class="btn br0 btn-secondary">Добавить пользователю роль</a>
+</p>
+<body class="body">
+    <table class="table table-striped mdl-js-data-table">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Логин пользователя
+                </th>
+                <th class="colortext">
+                    Роль
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td class="colortext">
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td class="colortext">
+        @Html.DisplayFor(modelItem => item.ApplicationRoleName)
+    </td>
+    <td>
+
+        <form asp-action="DeleteRole" asp-route-UserName="@item.UserName" asp-route-ApplicationRoleName="@item.ApplicationRoleName">
+            <input type="submit" value="Удалить роль у пользователя" class="btn br0 btn-secondary" , onclick="return confirm ('Удалить запись?')" />
+        </form>
+
+    </td>
+</tr>}
+        </tbody>
+    </table>
+    <a asp-controller="Home" asp-action="Index" class="colortext">Вернуться назад</a>
+
+
+</body>

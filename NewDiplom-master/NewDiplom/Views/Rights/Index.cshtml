@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NewDiplom.Models.Right>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Права</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped mdl-js-data-table" id="rights">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Выдать
+                </th>
+                <th class="colortext">
+                    Роль
+                </th>
+                <th class="colortext">
+                    Функции
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Give_out)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Role.Name_Role)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Function.Name_function)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" charset="utf8">
+    $(document).ready(function () {
+        $('#rights').DataTable({
+            "language": {
+                "url": "/lib/dataTables/dist/css/i18n/Russian.json",
+            },
+            columnDefs: [
+                {
+                    targets: [0, 1, 2],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ],
+            "pagingType": "full_numbers",
+            "stateSave": "true",
+        });
+    });
+</script>

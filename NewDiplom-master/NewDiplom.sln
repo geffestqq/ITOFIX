@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewDiplom", "NewDiplom\NewDiplom.csproj", "{D590E491-572D-40C5-87D3-8A189EABF92B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diplom", "Diplom\Diplom.csproj", "{530DA0C0-A3E0-4875-A689-7D766FEDF73D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D590E491-572D-40C5-87D3-8A189EABF92B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D590E491-572D-40C5-87D3-8A189EABF92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D590E491-572D-40C5-87D3-8A189EABF92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D590E491-572D-40C5-87D3-8A189EABF92B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{530DA0C0-A3E0-4875-A689-7D766FEDF73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530DA0C0-A3E0-4875-A689-7D766FEDF73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530DA0C0-A3E0-4875-A689-7D766FEDF73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530DA0C0-A3E0-4875-A689-7D766FEDF73D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB861266-1022-4008-AF83-A6777DF71830}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Diplom.Models.Position>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Должности</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped mdl-js-data-table" id="positions">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Название должности
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Position_name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" charset="utf8">
+    $(document).ready(function () {
+        $('#positions').DataTable({
+            "language": {
+                "url": "/lib/dataTables/dist/css/i18n/Russian.json",
+            },
+            columnDefs: [
+                {
+                    targets: [0, 1],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ],
+            "pagingType": "full_numbers",
+            "stateSave": "true",
+        });
+    });
+</script>

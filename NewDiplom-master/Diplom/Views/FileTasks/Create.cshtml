@@ -1,0 +1,43 @@
+﻿@model Diplom.Models.FileTask
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center colortext">Создание</h1>
+
+<h4 class="text-center colortext">Файл к задаче</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Path_File" class="control-label colortext">Путь к файлу</label>
+                    <input asp-for="Path_File" class="form-control" />
+                    <span asp-validation-for="Path_File" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="File_Detail" class="control-label colortext">Описание файла</label>
+                    <input asp-for="File_Detail" class="form-control" />
+                    <span asp-validation-for="File_Detail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TaskDistributionId" class="control-label colortext">Задача</label>
+                    <select asp-for="TaskDistributionId" class="form-control" asp-items="ViewBag.TaskDistributionId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Создать" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к файлам</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

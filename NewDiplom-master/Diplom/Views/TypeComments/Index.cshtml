@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Diplom.Models.TypeComment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Вид комментария</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Добавить запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Название комментария
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Name_comment)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

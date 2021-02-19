@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Diplom.Models.TaskComment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Комментарий к задачи</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped mdl-js-data-table" id="taskcomment">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Текст комментария
+                </th>
+                <th class="colortext">
+                    Вид комментария
+                </th>
+                <th class="colortext">
+                    Задача
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Text_comment)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Type_Comments.Name_comment)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.TaskDistributions.View)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" charset="utf8">
+    $(document).ready(function () {
+        $('#taskcomment').DataTable({
+            "language": {
+                "url": "/lib/dataTables/dist/css/i18n/Russian.json",
+            },
+            columnDefs: [
+                {
+                    targets: [0, 1, 2],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ],
+            "pagingType": "full_numbers",
+            "stateSave": "true",
+        });
+    });
+</script>

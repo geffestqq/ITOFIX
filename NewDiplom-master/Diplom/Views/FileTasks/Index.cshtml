@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Diplom.Models.FileTask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Файл к задаче</h1>
+
+<p>
+    <a asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Путь к файлу
+                </th>
+                <th class="colortext">
+                    Описание файла
+                </th>
+                <th class="colortext">
+                    Задача
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Path_File)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.File_Detail)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.TaskDistribution.View)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

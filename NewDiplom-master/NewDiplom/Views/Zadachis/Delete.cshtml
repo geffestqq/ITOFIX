@@ -1,0 +1,56 @@
+﻿@model NewDiplom.Models.Zadachi
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center colortext">Удаление</h1>
+<h4 class="text-center colortext">Задачи</h4>
+<body class="body">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Родитель
+            </dt>
+            <dt class="colortext">
+                @Html.DisplayFor(model => model.ZadachiParent.Task_Name)
+            <dt class="colortext">
+                Название задачи
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Task_Name)
+            </dd>
+            <dt class="colortext">
+                Описание задачи
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Task_Detail)
+            </dd>
+            <dt class="colortext">
+                Дата открытия
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Date_Open)
+            </dd>
+            <dt class="colortext">
+                Дата закрытия
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Date_Close)
+            </dd>
+            <dt class="colortext">
+                Статус
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Status.Status_name)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Удалить" class="btn br0 btn-secondary" , onclick="return confirm ('Удалить запись?')" /> |
+            <a asp-action="Index" class="colortext">Обратно к задачам</a>
+        </form>
+    </div>
+</body>

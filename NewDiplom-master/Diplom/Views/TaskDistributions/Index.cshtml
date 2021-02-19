@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Diplom.Models.TaskDistribution>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center colortext">Распределение задач</h1>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm col-1">
+            <a asp-action="Create" class="btn br0 btn-secondary" role="button">Создать</a>
+        </div>
+        <div class="col-sm col-5">
+            <div>
+                <a asp-action="FreeEmployees" class="btn br0 btn-secondary" role="button">Свободные сотрудники</a>
+            </div>
+        </div>
+    </div>
+</div>
+<body class="body">
+    <table class="table table-striped mdl-js-data-table" id="taskdistribution">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Распределено
+                </th>
+                <th class="colortext">
+                    Значение периода
+                </th>
+                <th class="colortext">
+                    Единица периода
+                </th>
+                <th class="colortext">
+                    Совместительство
+                </th>
+                <th class="colortext">
+                    Задача
+                </th>
+                <th class="colortext">
+                    Статус
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.StartedAt)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.PeriodValue)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.PeriodUnit)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.Plurality.View)
+                </td>
+                <td class="colortext">
+                    @Html.DisplayFor(modelItem => item.Zadachi.View)
+                </td>
+
+                @if (item.Status.Status_name == "В работе")
+                {
+                    <td class="colortext" style="color:#ffd800" >
+                        @Html.DisplayFor(modelItem => item.Status.Status_name)
+                    </td>
+                }
+                else if (item.Status.Status_name == "На проверке")
+                {
+                    <td class="colortext" style="color:#ff6a00" >
+                        @Html.DisplayFor(modelItem => item.Status.Status_name)
+                    </td>
+                }
+                else if (item.Status.Status_name == "Завершен")
+                {
+                    <td class="colortext" style="color:#00ff21" >
+                        @Html.DisplayFor(modelItem => item.Status.Status_name)
+                    </td>
+                }
+                else if (item.Status.Status_name == "На распределении")
+                {
+                    <td class="colortext" style="color:#808080" >
+                        @Html.DisplayFor(modelItem => item.Status.Status_name)
+                    </td>
+                }
+                else
+                {
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Status.Status_name)
+                    </td>
+                }
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" charset="utf8">
+    $(document).ready(function () {
+        $('#taskdistribution').DataTable({
+            "language": {
+                "url": "/lib/dataTables/dist/css/i18n/Russian.json",
+            },
+            columnDefs: [
+                {
+                    targets: [0, 1, 2],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ],
+            "pagingType": "full_numbers",
+            "stateSave": "true",
+        });
+    });
+</script>

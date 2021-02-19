@@ -1,0 +1,23 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{ ViewData["Title"] = "Details"; }
+
+<h1 class="text-center colortext">Подробнее</h1>
+<body class="body">
+    <div>
+        <h4 class="text-center colortext">Роли</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Название роли
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" , class="btn br0 btn-secondary">Изменить</a> |
+        <a asp-action="Index" class="colortext">Обратно к ролям</a>
+    </div>
+</body>

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Diplom.Models.Employee>
+
+@{
+    ViewData["Title"] = "Сотрудники";
+    Diplom.Models.EmployeeFilter.Filter filter = ViewData["Filter"] as Diplom.Models.EmployeeFilter.Filter;
+    var FilterSurname = filter.FilterSurname;
+    var FilterName = filter.FilterName;
+    var FilterSecond_Name = filter.FilterSecond_Name;
+}
+
+<h1 class="text-center colortext">Сотрудники</h1>
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm col-1">
+            <a asp-action="Create" class="btn br0 btn-secondary" role="button">Создать</a>
+        </div>
+        <div class="col-sm col-5">
+            <div>
+                <label class="btn br0 btn-secondary" for="fileupload_id">Импорт [Эксел]</label>
+                <input type="file" class="fileupload" id="fileupload_id" name="fileupload_name" />
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
+@*<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+
+<script type="text/javascript" language="javascript">
+
+    $(document).on('change', 'input[type=file].fileupload', function () {
+        var files = document.getElementById('fileupload_id').files;
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Upload", "Employees")',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        alert(result);
+                        var url = '@Url.Action("Index", "Employees")';
+                        window.location.href = url;
+                    },
+                    error: function (xhr, status, p3) {
+                        alert(xhr.responseText);
+                    }
+                });
+            } else {
+                alert("Браузер не поддерживает загрузку файлов HTML5!");
+            }
+        }
+    });
+</script>
+<body class="body">
+    <form asp-action="Index">
+        <div class="form-group">
+            <label class="control-label colortext">Фамилия</label>
+            <input asp-for="@FilterSurname" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label colortext">Имя</label>
+            <input asp-for="@FilterName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label colortext">Отчество</label>
+            <input asp-for="@FilterSecond_Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Применить фильт" class="btn br0 btn-secondary" />
+        </div>
+    </form>
+
+    <br />
+    <table class="table table-striped mdl-js-data-table" id="employees">
+        <thead>
+            <tr>
+                <th class="colortext">
+                    Фамилия
+                </th>
+                <th class="colortext">
+                    Имя
+                </th>
+                <th class="colortext">
+                    Отчество
+                </th>
+                <th class="colortext">
+                    Номер сотрудника
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Second_Name)
+                    </td>
+                    <td class="colortext">
+                        @Html.DisplayFor(modelItem => item.Employee_Number)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Изменить</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" , class="btn br0 btn-secondary">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" charset="utf8">
+    $(document).ready(function () {
+        $('#employees').DataTable({
+            "language": {
+                "url": "/lib/dataTables/dist/css/i18n/Russian.json",
+            },
+            columnDefs: [
+                {
+                    targets: [0, 1, 2, 3, 4],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ],
+            "pagingType": "full_numbers",
+            "stateSave": "true",
+        });
+    });
+</script>

@@ -1,0 +1,45 @@
+﻿@model NewDiplom.Models.Right
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center colortext">Изменение</h1>
+
+<h4 class="text-center colortext">Права</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Give_out" class="control-label colortext">Выдать</label>
+                    <input asp-for="Give_out" class="form-control" />
+                    <span asp-validation-for="Give_out" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RoleId" class="control-label colortext">Роли</label>
+                    <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FunctionId" class="control-label colortext">Функции</label>
+                    <select asp-for="FunctionId" class="form-control" asp-items="ViewBag.FunctionId"></select>
+                    <span asp-validation-for="FunctionId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к правам</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

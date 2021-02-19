@@ -1,0 +1,31 @@
+﻿@model Diplom.Models.Plurality
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center colortext">Подробнее</h1>
+<h4 class="text-center colortext">Совместительство</h4>
+<body class="body">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Сотрудник
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Employee.Surname) @Html.DisplayFor(model => model.Employee.Name) @Html.DisplayFor(model => model.Employee.Second_Name)
+            </dd>
+            <dt class="colortext">
+                Должность
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Position.Position_name)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" , class="btn br0 btn-secondary">Изменить</a> |
+        <a asp-action="Index" class="colortext">Обратно к совместительству</a>
+    </div>
+</body>

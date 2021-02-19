@@ -1,0 +1,42 @@
+﻿@model NewDiplom.Models.TaskComment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center colortext">Созадние</h1>
+
+<h4 class="text-center colortext">Комментарий к задачи</h4>
+<hr />
+<body class="body">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Text_comment" class="control-label colortext">Текст комментария</label>
+                    <input asp-for="Text_comment" class="form-control" />
+                    <span asp-validation-for="Text_comment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type_CommentsId" class="control-label colortext">Вид комментария</label>
+                    <select asp-for="Type_CommentsId" class="form-control" asp-items="ViewBag.Type_CommentsId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TaskDistributionsId" class="control-label colortext">Задача</label>
+                    <select asp-for="TaskDistributionsId" class="form-control" asp-items="ViewBag.TaskDistributionsId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Создать" class="btn br0 btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="colortext">Обратно к комментариям</a>
+    </div>
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

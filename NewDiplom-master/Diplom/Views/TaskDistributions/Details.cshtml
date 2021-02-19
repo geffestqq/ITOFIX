@@ -1,0 +1,55 @@
+﻿@model Diplom.Models.TaskDistribution
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center colortext">Подробнее</h1>
+<h4 class="text-center colortext">Распределение задач</h4>
+<body class="body">
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="colortext">
+                Распределено
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.StartedAt)
+            </dd>
+            <dt class="colortext">
+                Значение периода
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.PeriodValue)
+            </dd>
+            <dt class="colortext">
+                Единица периода
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.PeriodUnit)
+            </dd>
+            <dt class="colortext">
+                Совместительство
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Plurality.View)
+            </dd>
+            <dt class="colortext">
+                Задача
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Zadachi.View)
+            </dd>
+            <dt class="colortext">
+                Статус
+            </dt>
+            <dd class="colortext">
+                @Html.DisplayFor(model => model.Status.Status_name)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" , class="btn br0 btn-secondary">Изменить</a> |
+        <a asp-action="Index" class="colortext">Обратно к распределению задач</a>
+    </div>
+</body>

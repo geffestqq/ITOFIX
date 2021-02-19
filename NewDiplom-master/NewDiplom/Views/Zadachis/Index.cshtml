@@ -1,0 +1,155 @@
+﻿@model IEnumerable<NewDiplom.Models.Zadachi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="text-center colortext">Задачи</h1>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm col-2">
+            <a asp-action="Export" class="btn br0 btn-secondary" role="button">Экспорт</a>
+        </div>
+    </div>
+</div>
+<hr />
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
+
+<p>
+    <a id="idcreate" asp-action="Create" class="btn br0 btn-secondary">Создать запись</a>
+</p>
+<body class="body colortext">
+    <div class="row">
+        <div class="col col-12">
+            <label for="tree"></label>
+            <div id="tree" />
+        </div>
+        <br />
+        <hr />
+    </div>
+    <div class="row">
+        <br />
+        <hr />
+        <div class="col col-12">
+            <p id="action_block">
+                <a id="idedit" class="btn br0 btn-secondary" href="/Zadachis/Edit">Изменить</a>
+                <a id="iddetails" class="btn br0 btn-secondary" href="/Zadachis/Details">Подробнее</a>
+                <a id="iddelete" class="btn br0 btn-secondary" href="/Zadachis/Delete">Удалить</a>
+            </p>
+        </div>
+    </div>
+
+    <script type="text/javascript" language="javascript">
+
+
+    $(document).ready(function () {
+
+
+    $.getJSON('@Url.Action("getJsonTreeData")', function (result) {
+        $('#tree')
+            .jstree(
+                {
+                    'plugins': ["search", "types"],
+                'core': {
+                    'data': result           
+                    },
+                    'types': {
+                        'selectable': {
+                            'icon': 'https://img.icons8.com/office/16/000000/circled-dot.png'
+                        },
+                        'default': {
+                            'icon': 'https://img.icons8.com/office/16/000000/circled-dot.png'
+                        }
+                    },
+                    
+            }
+        );
+        $('#tree')
+            .on('changed.jstree', function (e, data) {                      
+            var i, j, r;
+            for (i = 0, j = data.selected.length; i < j; i++) {
+                r = data.instance.get_node(data.selected[i]).id;
+               
+                }
+
+                $('#event_result').html('Selected: ' + r);
+
+                if (action_block) {
+                    $('#action_block').show();
+                    $("#idedit").attr("href", "/Zadachis/Edit/" + r);
+                    $("#iddetails").attr("href", "/Zadachis/Details/" + r);
+                    $("#iddelete").attr("href", "/Zadachis/Delete/" + r);
+                    $("#idcreate").attr("href", "/Zadachis/Create/" + r);
+                   
+                } else {
+                    $('#action_block').hide();
+                }
+                
+        })
+    });
+});
+    $('#action_block').hide();
+
+    </script>
+</body>
+
+    @*<table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Родитель
+                    </th>
+                    <th>
+                        Название задачи
+                    </th>
+                    <th>
+                        Описание задачи
+                    </th>
+                    <th>
+                        Дата открытия
+                    </th>
+                    <th>
+                        Дата закрытия
+                    </th>
+                    <th>
+                        Статус
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (item.ZadachiParent != null)
+                            {
+                                @Html.DisplayFor(modelItem => item.ZadachiParent.Task_Name)
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Task_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Task_Detail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date_Open)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date_Close)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status.Status_name)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" , class="btn btn-info">Изменить</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id" , class="btn btn-success">Подробнее</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" , class="btn btn-danger">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
