@@ -50,7 +50,7 @@ namespace Diplom.Controllers
             List<Zadachi> treeNodes;
 
             treeNodes = _context.Zadachis.ToList();
-
+            
             var treeNodesViewModel = treeNodes
                 .Where(l => l.ZadachiParentId == null)
                     .Select(l => new TreeviewNodeEntity
@@ -114,6 +114,14 @@ namespace Diplom.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+
+        public IActionResult Login(string date_close)
+        {
+            string authData = $"Date_Close: {date_close}";
+            return Content(authData);
+        }
+
         public async Task<IActionResult> Create([Bind("Task_Name,Task_Detail,Date_Open,Date_Close,ZadachiParentId,StatusId")] Zadachi zadachi)
         {
             _context.Statuses.Load();
@@ -226,15 +234,17 @@ namespace Diplom.Controllers
             return _context.Zadachis.Any(e => e.Id == id);
         }
 
+        
+        
 
-
-
-        // Тут вывод в файл
-        public IActionResult Export(Zadachi zadachi)
-        {
+            // Тут вывод в файл
+            public IActionResult Export(Zadachi zadachi)
+         {
+           
             using (var workbook = new XLWorkbook())
             {
                 _context.Statuses.Load();
+                
                 var worksheet = workbook.Worksheets.Add("Zadachi");
                 var currentRow = 1;
                 #region Header
@@ -250,7 +260,7 @@ namespace Diplom.Controllers
                 worksheet.Cell(currentRow, 6).Value = "Статус";
                 #endregion
                 #region Body
-                foreach (var zadachii in _context.Zadachis)
+                foreach (var zadachii in _context.Zadachis.Where(e => e.Status.Status_name == "Завершен").ToList())
                 {
                     currentRow++;
                     worksheet.Cell(currentRow, 1).Value = zadachii.Task_Name;
@@ -272,6 +282,7 @@ namespace Diplom.Controllers
                         "Zadachi.xlsx"
                         );
                 }
+
             }
         }
 

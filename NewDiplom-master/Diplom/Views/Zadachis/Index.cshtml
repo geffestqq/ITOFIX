@@ -9,6 +9,12 @@
     <div class="row">
         <div class="col-sm col-2">
             <a asp-action="Export" class="btn br0 btn-secondary" role="button">Экспорт</a>
+            <form method="post">
+                <p>
+                    <input name="date_close" type="text" class="form-control" />
+                    <input type="submit" value="Отправить" />
+                </p>
+            </form>
         </div>
     </div>
 </div>
